@@ -3,7 +3,9 @@
 from setuptools import setup, find_packages
 
 setup(name='funsql',
-    version='0.2.1',
+    version='0.22',
+    long_description="long_description",
+    long_description_content_type='text/markdown',
     description='highlights sql syntax, and use template files to generate code',
     url='https://db2sql.com/funsql',
     author='Mahdi Jadaliha',
