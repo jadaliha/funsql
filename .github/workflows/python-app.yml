@@ -40,8 +40,8 @@ jobs:
         coverage report
         coverage json 
     - name: Archive code coverage results
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage
-          path: coverage.json
+      uses: actions/upload-artifact@v3
+      with:
+        name: coverage
+        path: coverage.json
         
