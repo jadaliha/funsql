@@ -46,6 +46,7 @@ jobs:
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        VERSION: ${{ github.event.release.tag_name }}
       run: |
         python setup.py sdist bdist_wheel
         twine upload dist/*

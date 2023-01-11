@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
 from setuptools import setup, find_packages
+import os
 
 setup(name='funsql',
-    version='0.22',
+    version=os.environ.get('VERSION', '0.0.1'),
     long_description="long_description",
     long_description_content_type='text/markdown',
     description='highlights sql syntax, and use template files to generate code',
