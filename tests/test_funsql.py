@@ -6,13 +6,11 @@ from funsql import Hook, readTemplates
 
 # Set up logging
 import logging
-logFilePath = "my.log"
-file_handler = logging.handlers.TimedRotatingFileHandler(filename=logFilePath, when='midnight', backupCount=30)
-logFormatter = logging.Formatter(fmt=' %(name)s :: %(levelname)-8s :: %(message)s')
-file_handler.setLevel(logging.DEBUG)
-file_handler.setFormatter(logFormatter)
-log = logging.getLogger("funsql")
-log.addHandler(file_handler)
+logging.basicConfig(
+    filename  = 'app.log',      # Log output file
+    level     = logging.DEBUG,  # Output level
+    format    = '%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s'
+)
 
 
 
