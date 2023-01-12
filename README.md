@@ -46,13 +46,7 @@ GROUP BY 1,2
 ORDER BY 3 DESC
 ```
 
-
-
-```go
 Here is an example script you can paste in Jupiter:
-```
-
-
 
 ```python
 from funsql import Hook, readTemplates
