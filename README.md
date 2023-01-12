@@ -14,18 +14,18 @@ A python package for building and running SQL-like templates as Python functions
 
 ## Installation
 
----
+
 ```bash
 pip install funsql
 ```
----
+
 
 ## Usage
 Here is a SQL file hosting two templates (validatorX and validatorZ) in the same file. `--> ` at the beginning of each query define the name of the corresponding function in the python funsql object.
 
 Here is an `Example queries.sql` file:
 
----
+
 ```sql
 --> validatorZ
 -- a meaningful validation of columns
@@ -45,15 +45,15 @@ FROM {tbl}
 GROUP BY 1,2
 ORDER BY 3 DESC
 ```
----
 
----
+
+
 ```go
-Here is an example script you can paste in jupyter:
+Here is an example script you can paste in Jupiter:
 ```
----
 
----
+
+
 ```python
 from funsql import Hook, readTemplates
 
@@ -74,13 +74,13 @@ functions = readTemplates('Example queries.sql')
 validatorZQ = functions.validatorZ(col='job_type', tbl='public.users')
 validatorZQ
 
-# this executes the query and return a pandas dataframe
+# this executes the query and returns a pandas dataframe
 validatorZQ()
 
 # you may use padnas.plot to visualize the results
 validatorZQ().plot(x='job_type', y='count',kind = 'bar')
 ```
----
+
 
 The `readTemplates` function takes a SQL-like file as an argument and returns a Python object hosting function that can be called with parameters to replace placeholders in the template and execute a query against a Postgres database (which is defined with the `Hook`). The package has syntax highlighting to help you understand the queries that led to the results.
 
