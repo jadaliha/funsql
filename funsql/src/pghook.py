@@ -53,7 +53,7 @@ class Hook():
         except Exception as e:
             print(e)
             print("Done!")
-        return
+            return
         df = DataFrame(resoverall.fetchall())
         df.columns = [desc[0] for desc in resoverall.description]
         log.debug(f"shape of the result is: {df.shape}")
