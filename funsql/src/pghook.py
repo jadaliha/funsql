@@ -19,11 +19,8 @@ class Hook():
         self.__conn_param = db_param
         self.con = psycopg2.connect(**self.__conn_param)
         self.schema = schema
-        
-    def getConn(self):
-        return self.con       
-    
-    def cur(self,q):
+
+    def cur(self,q:str):
         """
         This function run a query!
         """
@@ -39,7 +36,7 @@ class Hook():
         self.con.commit()
         return cur
     
-    def run(self,q):
+    def run(self,q:str):
         try:
           dt = self.cur(q).fetchall()
         except:
@@ -51,6 +48,12 @@ class Hook():
     
     def get(self,q):
         resoverall = self.cur(q)
+        try:
+            df = DataFrame(resoverall.fetchall(),columns = [desc[0] for desc in resoverall.description])
+        except Exception as e:
+            print(e)
+            print("Done!")
+        return
         df = DataFrame(resoverall.fetchall())
         df.columns = [desc[0] for desc in resoverall.description]
         log.debug(f"shape of the result is: {df.shape}")

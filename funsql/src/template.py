@@ -5,15 +5,18 @@ sql templates!
 __all__ = ["readTemplates"]
 
 import re
-from importlib.resources import files
 from .pghook import Hook
 
 red = "\x1b[31m{}\x1b[0m".format
 blue= "\x1b[34m{}\x1b[0m".format
 # Example: print(f"Hello {red('blue')}")
 
-
-words = files('funsql').joinpath('data/sql_keywords.txt').read_text().splitlines()
+# read sql keywords if possible
+try:
+    from importlib.resources import files
+    words = files('funsql').joinpath('data/sql_keywords.txt').read_text().splitlines()
+except:
+    words = ['SELECT', 'FROM', 'LIMIT', 'CREATE', 'TABLE', "GROUP", 'BY', 'ORDER', 'ON']
 
 
 # Example: template.setFormat('{One} {Two}').replaceParam()
